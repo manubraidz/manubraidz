@@ -1,0 +1,427 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+}
+
+body {
+  background: #000;
+  color: #fff;
+  overflow-x: hidden;
+}
+
+/* FUNDO */
+.neon-bg {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at top, #7b2cbf, #000 70%);
+  animation: pulse 6s infinite alternate;
+  z-index: -3;
+}
+
+@keyframes pulse {
+  from { filter: brightness(1); }
+  to { filter: brightness(1.4); }
+}
+
+/* ESTRELAS */
+.stars {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -2;
+}
+
+.star {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: #c77dff;
+  border-radius: 50%;
+  box-shadow: 0 0 12px #c77dff;
+  animation: twinkle 3s infinite;
+  opacity: 0;
+}
+
+@keyframes twinkle {
+  0% { opacity: 0; }
+  50% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+/* HERO */
+.hero {
+  min-height: 100vh;
+  text-align: center;
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.logo {
+  font-size: 4rem;
+  text-shadow: 0 0 25px #c77dff;
+}
+
+.heart {
+  color: #ff4d6d;
+}
+
+.bio {
+  margin: 20px 0;
+  line-height: 1.6;
+}
+
+.location {
+  color: #c77dff;
+  margin-bottom: 20px;
+}
+
+.social a {
+  margin: 0 15px;
+  color: #c77dff;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+/* PORTFOLIO */
+.portfolio {
+  padding: 80px 6%;
+}
+
+.filters {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.filters button {
+  background: none;
+  border: 1px solid #c77dff;
+  color: #c77dff;
+  padding: 8px 14px;
+  margin: 5px;
+  cursor: pointer;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 25px;
+}
+
+.card {
+  position: relative;
+  aspect-ratio: 1/1;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(157,78,221,0.5);
+  cursor: pointer;
+}
+
+.card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card span {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 10px;
+  background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+  text-align: center;
+}
+
+/* MODAL */
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.modal.active {
+  display: flex;
+}
+
+.modal img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 20px;
+}
+
+.close {
+  position: absolute;
+  top: 20px;
+  right: 25px;
+  font-size: 2.5rem;
+  cursor: pointer;
+}
+/* 📱 CELULAR */
+@media (max-width: 768px) {
+
+  .logo {
+    font-size: 2.5rem;
+  }
+
+  .bio p {
+    font-size: 0.95rem;
+  }
+
+  .social {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .social a {
+    display: inline-block;
+    padding: 12px;
+    border: 1px solid #c77dff;
+    border-radius: 20px;
+  }
+
+  .portfolio {
+    padding: 60px 4%;
+  }
+
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* 📱 CELULAR PEQUENO */
+@media (max-width: 480px) {
+
+  .logo {
+    font-size: 2rem;
+  }
+
+  .grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .card {
+    border-radius: 16px;
+  }
+}
+
+/* 💻 PC / TELAS GRANDES */
+@media (min-width: 1024px) {
+
+  .logo {
+    font-size: 5rem;
+  }
+
+  .portfolio {
+    padding: 100px 12%;
+  }
+
+  .grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+.site-footer {
+  text-align: center;
+  padding: 25px 15px;
+  font-size: 0.85rem;
+  color: #ddd;
+  opacity: 0.75;
+}
+
+.site-footer strong {
+  color: #c77dff;
+}
+
+.site-footer p {
+  margin: 0;
+}
+
+/* Ajuste no celular */
+@media (max-width: 480px) {
+  .site-footer {
+    font-size: 0.75rem;
+  }
+}
+.site-footer {
+  text-align: center;
+  padding: 30px 15px;
+  font-size: 0.85rem;
+  color: #e0e0e0;
+  opacity: 0.85;
+  animation: footerFade 2s ease;
+}
+
+.site-footer strong {
+  color: #c77dff;
+}
+
+.site-footer a {
+  color: #c77dff;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.site-footer a:hover {
+  color: #fff;
+  text-shadow: 0 0 12px #c77dff;
+}
+
+.heart {
+  color: #ff4d6d;
+  animation: heartBeat 1.8s infinite;
+  display: inline-block;
+}
+
+/* Animações */
+@keyframes footerFade {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 0.85;
+    transform: translateY(0);
+  }
+}
+
+@keyframes heartBeat {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.25); }
+}
+
+/* Responsivo celular */
+@media (max-width: 480px) {
+  .site-footer {
+    font-size: 0.75rem;
+    padding: 20px 10px;
+  }
+}
+.btn-agendar {
+  display: inline-block;
+  margin-top: 25px;
+  padding: 14px 32px;
+  border-radius: 40px;
+  background: linear-gradient(135deg, #7b2cbf, #c77dff);
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 0 20px rgba(199,125,255,0.6);
+  transition: 0.35s ease;
+}
+
+.btn-agendar:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 35px rgba(199,125,255,0.9);
+}
+.card video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+/* BASE DO CARD */
+.card {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+/* IMAGEM E VÍDEO */
+.card img,
+.card video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: transform 0.5s ease;
+}
+
+/* ZOOM SUAVE AO PASSAR O MOUSE / TOQUE */
+.card:hover img,
+.card:hover video {
+  transform: scale(1.12);
+}
+
+/* TEXTO DO CARD */
+.card span {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 14px;
+  text-align: center;
+  font-weight: 600;
+  color: #fff;
+  z-index: 2;
+
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.85),
+    rgba(0, 0, 0, 0.25),
+    transparent
+  );
+
+  text-shadow:
+    0 0 10px #c77dff,
+    0 0 20px #9d4edd;
+}
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.4s;
+}
+
+.modal.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal img,
+.modal video {
+  max-width: 90%;
+  max-height: 85%;
+  border-radius: 18px;
+  box-shadow: 0 0 40px rgba(199,125,255,0.8);
+}
+
+.modal video {
+  background: #000;
+}
+
+.close {
+  position: absolute;
+  top: 25px;
+  right: 30px;
+  font-size: 32px;
+  color: #fff;
+  cursor: pointer;
+  z-index: 1000;
+  transition: 0.3s;
+}
+
+.close:hover {
+  color: #c77dff;
+}

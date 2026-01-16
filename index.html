@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Manu Braids</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="neon-bg"></div>
+<div class="stars"></div>
+
+<section class="hero">
+  <h1 class="logo">Manu Braidz <span class="heart">💜</span></h1>
+
+  <div class="bio">
+    <p>Entre fios e mãos, eu crio artes ✨</p>
+    <p>Trança, beleza e autoestima</p>
+    <p>Realçando a beleza que já existe 💜</p>
+  </div>
+
+  <p class="location">📍 Feira de Santana</p>
+
+  <div class="social">
+    <a href="https://www.instagram.com/manu.braidz" target="_blank">Instagram</a>
+
+    <a
+      href="https://wa.me/5575982872971?text=Olá!%20Tudo%20bem%3F%20Gostaria%20de%20agendar%20um%20horário%20para%20tranças.%20Poderia%20me%20informar%20a%20disponibilidade%2C%20por%20favor%3F"
+      class="btn-agendar"
+      target="_blank"
+    >
+      💜 Agendar pelo WhatsApp
+    </a>
+  </div>
+</section>
+
+<section class="portfolio">
+  <h2>Trabalhos</h2>
+
+  <div class="filters">
+    <button data-filter="all">Todos</button>
+    <button data-filter="nago">Nagô</button>
+    <button data-filter="tiara">Tiara</button>
+    <button data-filter="outros">Outros</button>
+  </div>
+
+  <div class="grid">
+
+    <!-- CARD COM VÍDEO -->
+    <div class="card video-card nago">
+      <video src="assets/videos/preparo.mp4" muted loop playsinline></video>
+      <span>Preparo</span>
+    </div>
+
+    <!-- CARD IMAGEM -->
+    <div class="card outros">
+      <img src="img/cabeça toda.jpeg" alt="Cabeça Toda">
+      <span>Cabeça Toda</span>
+    </div>
+
+    <!-- CARD IMAGEM -->
+    <div class="card outros">
+      <img src="img/Nago lateral.jpeg" alt="Cabeça Toda">
+      <span>Nago Lateral</span>
+    </div>
+
+    <!-- CARD IMAGEM -->
+    <div class="card tiara">
+      <img src="img/Nago topo.jpeg" alt="Tiara">
+      <span>Tiara</span>
+    </div>
+
+    <!-- CARD IMAGEM -->
+    <div class="card outros">
+      <img src="img/outros.jpeg" alt="Personalizada">
+      <span>Personalizada</span>
+    </div>
+
+  </div>
+</section>
+
+<footer class="site-footer">
+  <p>
+    Feito com <span class="heart">❤</span> por
+    <a href="https://www.instagram.com/liiisboa01" target="_blank">liiisboa01</a>
+    • Para <strong>Manu Braids</strong> •
+    <span id="year"></span>
+  </p>
+</footer>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  /* AUTOPLAY DOS VÍDEOS */
+  document.querySelectorAll('.video-card').forEach(card => {
+    const video = card.querySelector('video');
+
+    card.addEventListener('mouseenter', () => video.play());
+    card.addEventListener('mouseleave', () => video.pause());
+    card.addEventListener('touchstart', () => video.play());
+  });
+</script>  
+<!-- MODAL VISUALIZAÇÃO -->
+<div class="modal" id="mediaModal">
+  <span class="close" id="closeModal">✕</span>
+
+  <img id="modalImg" style="display:none;">
+  <video id="modalVideo" controls style="display:none;"></video>
+</div>
+<script>
+  const modal = document.getElementById("mediaModal");
+  const modalImg = document.getElementById("modalImg");
+  const modalVideo = document.getElementById("modalVideo");
+  const closeModal = document.getElementById("closeModal");
+
+  // Abrir imagem
+  document.querySelectorAll(".card img").forEach(img => {
+    img.addEventListener("click", () => {
+      modal.classList.add("active");
+      modalImg.src = img.src;
+      modalImg.style.display = "block";
+      modalVideo.style.display = "none";
+    });
+  });
+
+  // Abrir vídeo
+  document.querySelectorAll(".card video").forEach(video => {
+    video.addEventListener("click", () => {
+      modal.classList.add("active");
+      modalVideo.src = video.src;
+      modalVideo.style.display = "block";
+      modalImg.style.display = "none";
+      modalVideo.play();
+    });
+  });
+
+  // Fechar modal
+  closeModal.addEventListener("click", fecharModal);
+  modal.addEventListener("click", e => {
+    if (e.target === modal) fecharModal();
+  });
+
+  function fecharModal() {
+    modal.classList.remove("active");
+    modalVideo.pause();
+    modalVideo.src = "";
+  }
+</script>
+
+
+
+</body>
+</html>
